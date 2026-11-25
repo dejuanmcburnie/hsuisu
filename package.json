@@ -1,0 +1,23 @@
+{
+  "name": "headscale-signup",
+  "version": "1.0.0",
+  "description": "Thin self-service signup layer for Headscale: email+domain gated OTP verification that issues a headscale pre-auth key, deployed alongside gurucomputing/headscale-ui.",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "nodemailer": "^10.6.1"
+  }
+}

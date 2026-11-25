@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enroll your device</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>You're verified</h1>
+    <p class="subtitle">Run this on the device you want to enroll:</p>
+
+    <pre class="cmd" id="cmd">tailscale up --login-server=<%= loginServer %> --authkey=<%= authKey %></pre>
+    <button type="button" onclick="copyCmd()">Copy command</button>
+
+    <p class="meta">
+      This key expires at <%= new Date(expiration).toLocaleString() %> and can only be used once.
+      If it expires before you use it, go back and verify again to get a new one.
+    </p>
+
+    <% if (adminUiUrl) { %>
+      <p class="meta">Administrator? <a href="<%= adminUiUrl %>">Open the admin UI</a></p>
+    <% } %>
+  </div>
+
+  <script>
+    function copyCmd() {
+      const text = document.getElementById('cmd').textContent;
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+  </script>
+</body>
+</html>
